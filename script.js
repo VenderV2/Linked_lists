@@ -33,6 +33,20 @@ class LinkedList {
             this.insertAppendedNode(newNode, currentNode.nextNode)
         }
     }
+    prependNode(id, data) {
+        const newNode = new Node(id, data)
+        if (this.headNode == null) {
+            this.headNode = newNode;
+            console.log('Head node is ' + this.headNode.data)
+        }
+        else {
+            this.insertPrependedNode(newNode, this.headNode)
+        }
+    }
+    insertPrependedNode(newNode, currentNode) {
+        this.headNode = newNode;
+        this.headNode.nextNode = currentNode;
+    }
 }
 
 const foo = new LinkedList()
@@ -40,5 +54,5 @@ foo.appendNode(1, 7)
 foo.appendNode(2, 9)
 foo.appendNode(3, 21)
 foo.appendNode(4, 12)
-
+foo.prependNode(5, 0)
 console.log(foo)
