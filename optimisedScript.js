@@ -1,3 +1,6 @@
+const append = 'append'
+const prepend = 'prepend'
+
 class Node {
     constructor(id, data) {
         this.id = id;
@@ -9,35 +12,28 @@ class LinkedList {
     constructor() {
         this.headNode = null;
     }
-    appendNode(id, data) {
+    insertNode(append_prepend, id, data) {
         const newNode = new Node(id, data)
         if (this.headNode == null) {
             this.headNode = newNode;
             console.log('Head node is ' + this.headNode.data)
         }
         else {
-            this.insertAppendedNode(newNode, this.headNode)
+            if (append_prepend === append) {
+                this.insertAppendedNode(newNode, this.headNode)
+            }
+            else if (append_prepend === prepend) {
+                this.insertPrependedNode(newNode, this.headNode)
+            }
         }
-        
     }
     insertAppendedNode(newNode, currentNode) {
-
         if (currentNode.nextNode == null) {
             currentNode.nextNode = newNode;
             console.log('Next node is ' + currentNode.nextNode.data)
         }
         else {
             this.insertAppendedNode(newNode, currentNode.nextNode)
-        }
-    }
-    prependNode(id, data) {
-        const newNode = new Node(id, data)
-        if (this.headNode == null) {
-            this.headNode = newNode;
-            console.log('Head node is ' + this.headNode.data)
-        }
-        else {
-            this.insertPrependedNode(newNode, this.headNode)
         }
     }
     insertPrependedNode(newNode, currentNode) {
@@ -47,9 +43,9 @@ class LinkedList {
 }
 
 const foo = new LinkedList()
-foo.appendNode(1, 7)
-foo.appendNode(2, 9)
-foo.appendNode(3, 21)
-foo.appendNode(4, 12)
-foo.prependNode(5, 0)
+foo.insertNode(append ,1, 7)
+foo.insertNode(append ,2, 9)
+foo.insertNode(append ,3, 21)
+foo.insertNode(append ,4, 12)
+foo.insertNode(prepend ,5, 0)
 console.log(foo)
